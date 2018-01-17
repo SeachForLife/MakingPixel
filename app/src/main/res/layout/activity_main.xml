@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:makingpixel="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/activity_main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@android:color/darker_gray"
+    >
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="10dp"
+        android:text="矩形"
+        android:id="@+id/main_rect"
+        android:onClick="mOnClick"
+        />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/main_rect"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="10dp"
+        android:text="圆形"
+        android:id="@+id/main_circle"
+        android:onClick="mOnClick"
+        />
+
+    <com.loren_yang.makingpixelview.MakingPixelView
+        android:id="@+id/main_mpView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        makingpixel:PixelDivider="10dp"/>
+</RelativeLayout>
