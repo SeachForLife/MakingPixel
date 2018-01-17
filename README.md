@@ -5,8 +5,7 @@
 
 # 运行效果
 
-|:-----|
-| <img src="GIF/MakingPixel.gif" width="280" height="475" />|
+ <img src="Gif/MakingPixel.gif" width="280" height="475" />
 
 # Gradle
 
