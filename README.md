@@ -5,7 +5,7 @@
 
 # 运行效果
 
- <img src="Gif/MakingPixel.gif" width="280" height="475" />
+ <img src="Gif/MakingPixel.gif" width="475" height="280" />
 
 # Gradle
 
