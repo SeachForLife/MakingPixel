@@ -34,6 +34,7 @@ public class MainActivity extends AppCompatActivity {
         mpAdatper.setOnItemClickListenerListener(new BaseMakingPixelInterface.OnItemClickListener() {
             @Override
             public void onItemClick(int row, int col) {
+                System.out.println("click"+row);
                 if(arrays[row][col].equals("#FFB095")){
                     arrays[row][col] = "#FFFFFF";
                 }else {

@@ -8,6 +8,7 @@ import android.graphics.Paint;
 import android.graphics.PointF;
 import android.graphics.RectF;
 import android.util.AttributeSet;
+import android.util.Log;
 import android.util.TypedValue;
 import android.view.MotionEvent;
 import android.view.View;
@@ -20,6 +21,7 @@ import com.loren_yang.adapter.BaseMakingPixelAdapter;
 
 public class MakingPixelView extends View  {
 
+    private static final String TAG = "MakingPixelView";
     private final int MODE_DRAG=1;//拖动模式
     private final int MODE_ZOOM=2;//缩放模式
 
@@ -165,21 +167,26 @@ public class MakingPixelView extends View  {
         int action = event.getAction();
         switch (action&MotionEvent.ACTION_MASK){
             case MotionEvent.ACTION_DOWN:
+//                System.out.println("click down");
                 mMode=MODE_DRAG;
                 isDrag=false;
                 mStartPoint.x = event.getX();
                 mStartPoint.y = event.getY();
                 break;
             case MotionEvent.ACTION_UP:
+//                Log.i(TAG, "onTouchEvent: up"+(mAdapter==null)+"::"+isDrag);
                 mEndPoint.x = event.getX();
                 mEndPoint.y = event.getY();
                 if(isDrag) break;
                 int itemIndexX = getItemIndexX(mStartPoint.x);
                 int itemIndexY = getItemIndexY(mStartPoint.y);
                 if(mAdapter == null) break;
+//                Log.i(TAG, "onTouchEvent: begin count X Y");
                 if(itemIndexX == getItemIndexX(mEndPoint.x) && itemIndexY == getItemIndexY(mEndPoint.y)
                         &&itemIndexX<mAdapter.getColumnCount() &&itemIndexY<mAdapter.getRowCount()){
+//                    Log.i(TAG, "onTouchEvent: enter 1");
                     if(itemIndexX >= 0 && itemIndexY >=0 && mAdapter != null){
+//                        Log.i(TAG, "onTouchEvent: enter 2");
                         mAdapter.onReceiveItemClick(
                                 itemIndexY,itemIndexX);
                     }
@@ -206,6 +213,8 @@ public class MakingPixelView extends View  {
                 }else if(mMode==MODE_DRAG){
                     mEndPoint.x = event.getX();
                     mEndPoint.y = event.getY();
+//                    System.out.println("-----"+Math.abs(offsetX+mEndPoint.x-mStartPoint.x));
+                    if(Math.abs(mEndPoint.x-mStartPoint.x)<10) break;
 //                    if(Math.abs(offsetX+mEndPoint.x-mStartPoint.x+nowLeft)>canvasWidth-10) break;
 //                    if(Math.abs(offsetY+mEndPoint.y-mStartPoint.y+nowTop)>canvasHeight-10) break;
                     offsetX+=mEndPoint.x-mStartPoint.x;

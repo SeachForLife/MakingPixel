@@ -4,33 +4,49 @@
     android:id="@+id/activity_main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@android:color/darker_gray"
-    >
+    android:background="@android:color/darker_gray">
 
     <Button
+        android:id="@+id/main_rect"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginLeft="10dp"
         android:layout_marginTop="10dp"
-        android:text="矩形"
-        android:id="@+id/main_rect"
         android:onClick="mOnClick"
-        />
+        android:text="矩形" />
 
     <Button
+        android:id="@+id/main_circle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/main_rect"
         android:layout_marginLeft="10dp"
         android:layout_marginTop="10dp"
-        android:text="圆形"
-        android:id="@+id/main_circle"
         android:onClick="mOnClick"
-        />
+        android:text="圆形" />
 
-    <com.loren_yang.makingpixelview.MakingPixelView
-        android:id="@+id/main_mpView"
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        makingpixel:PixelDivider="10dp"/>
+        android:orientation="vertical"
+        >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="4"
+            >
+
+            <com.loren_yang.makingpixelview.MakingPixelView
+                android:id="@+id/main_mpView"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                makingpixel:PixelDivider="10dp" />
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            ></LinearLayout>
+    </LinearLayout>
 </RelativeLayout>
